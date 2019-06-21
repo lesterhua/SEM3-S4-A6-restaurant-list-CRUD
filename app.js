@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const Restaurant = require("./models/restaurant");
 
-mongoose.connect("mongodb://127.0.0.1/restaurant");
+mongoose.connect("mongodb://127.0.0.1/restaurant", { useNewUrlParser: true });
 
 const db = mongoose.connection;
 
