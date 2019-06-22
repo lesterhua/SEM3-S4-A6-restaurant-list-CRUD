@@ -125,7 +125,12 @@ app.post("/restaurant/:id", (req, res) => {
 
 //delete action
 app.post("/restaurant/:id/delete", (req, res) => {
-  res.send("刪除一個");
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+    restaurant.remove(err => {
+      return res.redirect("/");
+    });
+  });
 });
 
 //starting and listen web server
