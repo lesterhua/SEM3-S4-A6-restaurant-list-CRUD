@@ -96,12 +96,31 @@ app.get("/restaurant/:id", (req, res) => {
 
 //edit page
 app.get("/restaurant/:id/edit", (req, res) => {
-  res.send("修改頁面");
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+    return res.render("edit", { restaurant: restaurant });
+  });
 });
 
 //edit action
 app.post("/restaurant/:id", (req, res) => {
-  res.send("新增一筆");
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+    (restaurant.name = req.body.name),
+      (restaurant.name_en = req.body.name_en),
+      (restaurant.category = req.body.category),
+      (restaurant.rating = req.body.rating),
+      (restaurant.image = req.body.image),
+      (restaurant.phone = req.body.phone),
+      (restaurant.location = req.body.location),
+      (restaurant.google_map = req.body.google_map),
+      (restaurant.description = req.body.description);
+
+    restaurant.save(function(err) {
+      if (err) return console.error(err);
+      return res.redirect(`/restaurant/${req.params.id}`);
+    });
+  });
 });
 
 //delete action
