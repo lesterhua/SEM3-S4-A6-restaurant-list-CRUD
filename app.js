@@ -87,7 +87,11 @@ app.post("/restaurant", (req, res) => {
 
 //detail page
 app.get("/restaurant/:id", (req, res) => {
-  res.send("顯示一筆詳細內容");
+  console.log("req.params.id", req.params.id);
+  Restaurant.findById(req.params.id, (err, restaurant) => {
+    if (err) return console.error(err);
+    return res.render("show", { restaurant: restaurant });
+  });
 });
 
 //edit page
@@ -102,7 +106,7 @@ app.post("/restaurant/:id", (req, res) => {
 
 //delete action
 app.post("/restaurant/:id/delete", (req, res) => {
-  res.send("修改頁面");
+  res.send("刪除一個");
 });
 
 //starting and listen web server
