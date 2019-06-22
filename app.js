@@ -60,6 +60,36 @@ app.get("/search", (req, res) => {
   });
 });
 
+//create new page
+app.get("/restaurant/new", (req, res) => {
+  res.send("新增頁面");
+});
+
+//create new action
+app.post("/restaurant", (req, res) => {
+  res.send("新增一筆");
+});
+
+//detail page
+app.get("/restaurant/:id", (req, res) => {
+  res.send("顯示一筆詳細內容");
+});
+
+//edit page
+app.get("/restaurant/:id/edit", (req, res) => {
+  res.send("修改頁面");
+});
+
+//edit action
+app.post("/restaurant/:id", (req, res) => {
+  res.send("新增一筆");
+});
+
+//delete action
+app.post("/restaurant/:id/delete", (req, res) => {
+  res.send("修改頁面");
+});
+
 //starting and listen web server
 app.listen(port, () => {
   console.log(`Express app is running on : http://localhost:${port}`);
