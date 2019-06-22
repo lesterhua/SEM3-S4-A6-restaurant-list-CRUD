@@ -18,6 +18,9 @@ app.set("view engine", "handlebars");
 //use body-parse on express
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//use static files
+app.use(express.static("public"));
+
 //Assign Mongoose to db
 const db = mongoose.connection;
 
@@ -33,7 +36,11 @@ db.once("open", () => {
 
 //route setting for index page
 app.get("/", (req, res) => {
-  res.render("index");
+  //use Model find to get MongoDB to controller
+  Restaurant.find((err, restaurant) => {
+    if (err) return console.error(err);
+    return res.render("index", { restaurants: restaurant });
+  });
 });
 
 //starting and listen web server
