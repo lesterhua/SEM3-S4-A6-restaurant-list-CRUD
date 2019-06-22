@@ -43,6 +43,23 @@ app.get("/", (req, res) => {
   });
 });
 
+//route setting for search bar
+app.get("/search", (req, res) => {
+  console.log("req.query.keyword", req.query.keyword);
+  const keyword = req.query.keyword;
+  Restaurant.find((err, restaurant) => {
+    if (err) return console.error(err);
+
+    const searchResult = restaurant.filter(({ name, category }) => {
+      return (
+        name.toLowerCase().includes(keyword.toLowerCase()) ||
+        category.toLowerCase().includes(keyword.toLowerCase())
+      );
+    });
+    return res.render("index", { restaurants: searchResult, keyword: keyword });
+  });
+});
+
 //starting and listen web server
 app.listen(port, () => {
   console.log(`Express app is running on : http://localhost:${port}`);
