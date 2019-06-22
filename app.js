@@ -62,12 +62,27 @@ app.get("/search", (req, res) => {
 
 //create new page
 app.get("/restaurant/new", (req, res) => {
-  res.send("新增頁面");
+  res.render("create");
 });
 
-//create new action
+// create new action
 app.post("/restaurant", (req, res) => {
-  res.send("新增一筆");
+  console.log("req.body", req.body);
+  const restaurant = new Restaurant({
+    name: req.body.name,
+    name_en: req.body.name_en,
+    category: req.body.category,
+    rating: req.body.rating,
+    image: req.body.image,
+    phone: req.body.phone,
+    location: req.body.location,
+    google_map: req.body.google_map,
+    description: req.body.description
+  });
+  restaurant.save(function(err) {
+    if (err) return console.error(err);
+    return res.redirect("/");
+  });
 });
 
 //detail page

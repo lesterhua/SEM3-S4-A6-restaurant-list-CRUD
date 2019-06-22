@@ -1,0 +1,57 @@
+<div class="card" style="width:60%;margin: 0 auto; width: 70%;
+margin-top: 20px; margin-bottom: 20px;">
+  <div class="card-body m-3">
+    <form action='/restaurant' method="POST">
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <label for="name">餐廳中文名稱:</label>
+          <input type="text" class="form-control" name="name" placeholder="輸入餐廳中文名稱">
+        </div>
+        <div class="col-sm-6">
+          <label for="name_en">餐廳英文名稱:</label>
+          <input type="text" class="form-control" name="name_en" placeholder="輸入英文餐廳名稱">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <label for="category">餐廳類別:</label>
+          <input type="text" class="form-control" name="category" placeholder="輸入餐廳類別">
+        </div>
+        <div class="col-sm-6">
+          <label for="rating">餐廳評比:</label>
+          <input type="text" class="form-control" name="rating" placeholder="輸入餐廳評比">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="image">餐廳照片網址:</label>
+        <input type="text" class="form-control" name="image" placeholder="輸入餐廳照片網址">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">餐廳電話:</label>
+        <input type="text" class="form-control" name="phone" placeholder="輸入餐廳電話">
+      </div>
+
+      <div class="form-group">
+        <label for="location">餐廳地址:</label>
+        <input type="text" class="form-control" name="location" placeholder="輸入餐廳地址">
+      </div>
+      <div class="form-group">
+        <label for="google_map">餐廳google map 網址:</label>
+        <input type="text" class="form-control" name="google_map" placeholder="輸入餐廳google map 網址">
+      </div>
+
+      <div class="form-group row">
+        <textarea type="textarea" name="description" cols="70" rows="5" placeholder="輸入餐廳介紹"
+          style="margin-left: 15px;"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+  </div>
+</div>
+</div>
